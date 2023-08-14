@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/user', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
-Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+Route::get('home', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 
 // category Routes
-
+Route::get('home', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('home');
 Route::controller(App\Http\Controllers\Admin\CategoryController::class)->group(function () {
     Route::get('/category', 'index');
     Route::get('/category/create', 'create');
@@ -68,3 +68,33 @@ Route::controller(App\Http\Controllers\Admin\ProductController::class)->group(fu
     });
 
 });
+
+
+Route::get('addcart/{id}', [App\Http\Controllers\Frontend\FrontendController::class, 'cart'])->name('addcart');
+
+Route::patch('update_cart', [App\Http\Controllers\Frontend\CartController::class, 'update'])->name('update_cart');
+Route::delete('remove_from_cart', [ProductController::class, 'remove'])->name('remove_from_cart');
+// login
+Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+// register
+Route::get('register', [App\Http\Controllers\UserController::class, 'user_register'])->name('user_register');
+
+
+
+
+// login and register route
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('home');
+
+// Route::get('addcart/{product_id}/delete', 'destroy',[App\Http\Controllers\Frontend\FrontendController::class, 'cart'])->name('addcart.destroy');
+
+
+Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function () {
+
+    Route::get('/addcart/{product_id}/delete','destroy');
+});
+
+Route::get('checkout', [App\Http\Controllers\Frontend\FrontendController::class, 'checkout'])->name('checkout');
+Route::patch('update-cart', [App\Http\Controllers\Frontend\FrontendController::class, 'update'])->name('update.cart');
+Route::delete('remove-from-cart', [App\Http\Controllers\Frontend\FrontendController::class, 'remove'])->name('remove.from.cart');

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title','Home page')
-
 @section('content')
 
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
@@ -39,4 +38,23 @@
     </button>
 </div>
 
+<div class="row">
+@foreach($products as $key =>$productItem)
+
+    <div class="col-sm-4">
+        <div class="card m-2">
+            <div class="card-body">
+            @if($productItem->image)
+            <img src="{{asset($productItem->image)}}"  style="width:50px;height:50px" alt="img">
+        
+            @endif
+                <h5 class="card-title"> {{$productItem->name}}</h5>               
+                <h3>Rs.{{$productItem->selling_price}}</h3>
+                <a href="<?php echo url('')?>/addcart/{{$productItem->id}}" class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+
+@endforeach
+</div>
 @endsection

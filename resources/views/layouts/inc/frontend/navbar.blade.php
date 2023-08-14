@@ -3,7 +3,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                        <h5 class="brand-name">Funda Ecom</h5>
+                        <h5 class="brand-name">Ecomm Shop</h5>
                     </div>
                     <div class="col-md-5 my-auto">
                         <form role="search">
@@ -15,9 +15,19 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-5 my-auto">
+                    
+                    <!-- <div class="col-md-5 my-auto">
                         <ul class="nav justify-content-end">
-                            
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{url('login')}}">
+                                    <i class="fa fa-user"></i> Login
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('register')}}">
+                                    <i class="fa fa-user"></i> register
+                                </a>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fa fa-shopping-cart"></i> Cart (0)
