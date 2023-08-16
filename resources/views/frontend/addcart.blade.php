@@ -52,7 +52,7 @@
         @php
         $total = 0;
         foreach ($products as $product) {
-        $total += $product['selling_price'] *2;
+        $total += $product['selling_price'] ;
         }
         @endphp
 

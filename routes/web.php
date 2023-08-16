@@ -98,3 +98,5 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
 Route::get('checkout', [App\Http\Controllers\Frontend\FrontendController::class, 'checkout'])->name('checkout');
 Route::patch('update-cart', [App\Http\Controllers\Frontend\FrontendController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [App\Http\Controllers\Frontend\FrontendController::class, 'remove'])->name('remove.from.cart');
+
+Route::post('payment', [App\Http\Controllers\Frontend\FrontendController::class, 'payment'])->name('payment');

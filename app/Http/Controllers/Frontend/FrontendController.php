@@ -25,7 +25,7 @@ class FrontendController extends Controller
     public function cart(Request $request, $id)
     {    
       
-        $user_id = Auth::user()->id; 
+        $user_id = auth()->user()->id;
     
         $product = Product::findOrFail($id);
 
@@ -82,5 +82,8 @@ public function remove(Request $request)
         }
         session()->flash('success', 'Product removed successfully');
     }
+}
+public function payment(){
+    return view('frontend.payment');
 }
 }
